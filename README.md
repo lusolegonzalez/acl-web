@@ -53,3 +53,12 @@ npm run preview
 1. Ejecutar `npm run build`.
 2. Publicar contenido de `dist/` en la rama de Pages (`gh-pages`) o usar una acción de deploy.
 3. Si se publica en subpath, definir `base` en `vite.config.ts`.
+
+
+### Netlify
+1. Importar el repositorio en Netlify.
+2. Build command: `npm run build`.
+3. Publish directory: `dist`.
+4. Asegurarse de **no** publicar la raíz del repo ni `src/` directamente.
+
+> Este repositorio incluye `netlify.toml` con esos valores y redirect SPA para evitar pantalla en blanco al refrescar rutas.
