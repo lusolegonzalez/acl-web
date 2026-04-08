@@ -1,4 +1,23 @@
-export const navLinks = [
+export type NavLink = {
+  href: string;
+  label: string;
+};
+
+export type Project = {
+  name: string;
+  description: string;
+  stack: string;
+  linkText: string;
+  href?: string;
+};
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+export const navLinks: NavLink[] = [
   { href: '#que-hacemos', label: 'Qué hacemos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#proyectos', label: 'Proyectos' },
@@ -14,7 +33,7 @@ export const services = [
   'Optimización de sistemas existentes'
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     name: 'Bralt QR',
     description:
@@ -29,4 +48,10 @@ export const projects = [
     stack: 'Caso de negocio + solución a medida',
     linkText: 'Agregar enlace'
   }
+];
+
+export const socialLinks: SocialLink[] = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com', external: true },
+  { label: 'Email', href: 'mailto:hola@azulcodelab.com' },
+  { label: 'GitHub', href: 'https://github.com', external: true }
 ];
