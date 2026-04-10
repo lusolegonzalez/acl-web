@@ -158,8 +158,8 @@ const App = () => {
               Contanos el contexto y te proponemos un plan de trabajo realista, con alcance y
               prioridades definidas.
             </p>
-            <a className="btn btn-primary" href="mailto:hola@azulcodelab.com">
-              Escribir a hola@azulcodelab.com
+            <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
+              Escribinos
             </a>
           </SectionBlock>
         </main>
