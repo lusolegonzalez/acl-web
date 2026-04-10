@@ -47,15 +47,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => (
     <h3>{project.name}</h3>
     <p>{project.description}</p>
     <p className="project-stack">{project.stack}</p>
-    {project.href ? (
-      <a href={project.href} target="_blank" rel="noreferrer">
-        {project.linkText}
-      </a>
-    ) : (
-      <span className="text-link-disabled" aria-disabled="true">
-        {project.linkText}
-      </span>
-    )}
   </article>
 );
 
@@ -158,8 +149,8 @@ const App = () => {
               Contanos el contexto y te proponemos un plan de trabajo realista, con alcance y
               prioridades definidas.
             </p>
-            <a className="btn btn-primary" href="mailto:hola@azulcodelab.com">
-              Escribir a hola@azulcodelab.com
+            <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
+              Escribinos
             </a>
           </SectionBlock>
         </main>
