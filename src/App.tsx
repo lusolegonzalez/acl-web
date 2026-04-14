@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import SpearMark from './components/SpearMark';
 import {
   navLinks,
   projects,
@@ -44,9 +43,14 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => (
   <article className="card project-card">
-    <h3>{project.name}</h3>
-    <p>{project.description}</p>
-    <p className="project-stack">{project.stack}</p>
+    <div className="project-media">
+      <img src={project.image} alt={project.imageAlt} loading="lazy" />
+    </div>
+    <div className="project-content">
+      <h3>{project.name}</h3>
+      <p>{project.description}</p>
+      <p className="project-stack">{project.stack}</p>
+    </div>
   </article>
 );
 
@@ -62,6 +66,7 @@ const FooterLink = ({ link }: FooterLinkProps) => (
 
 const App = () => {
   const year = new Date().getFullYear();
+  const brandLogo = '/LogoAzulCodeLab.png';
 
   return (
     <div className="app-shell">
@@ -74,29 +79,32 @@ const App = () => {
       <div className="app">
         <header className="site-header">
           <a href="#inicio" className="brand">
-            <SpearMark className="brand-mark" decorative />
+            <img className="brand-logo" src={brandLogo} alt="Azul Code Lab" />
             <span className="brand-text">
               <strong>AZUL</strong>
               <small>CODE LAB</small>
             </span>
           </a>
-          <nav aria-label="Navegación principal">
+          <nav className="site-nav" aria-label="Navegación principal">
             <NavItems links={navLinks} />
           </nav>
+          <a className="btn btn-header" href="#contacto">
+            Hablemos
+          </a>
         </header>
 
         <main id="contenido-principal">
           <section className="hero" id="inicio" aria-labelledby="hero-title">
             <div className="hero-content">
               <p className="eyebrow">Ingeniería de producto para operación real</p>
-              <h1 id="hero-title">Software serio para equipos que no pueden perder tiempo</h1>
+              <h1 id="hero-title">Construimos software que resuelve problemas reales. Sin humo.</h1>
               <p className="hero-subtitle">
                 Diseñamos, construimos y mantenemos sistemas a medida con foco en ejecución.
-                Decisiones claras, entregables concretos y cero promesas vacías.
+                Criterio técnico, entregas concretas y comunicación directa de principio a fin.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="#contacto">
-                  Coordinar una llamada
+                  Hablemos
                 </a>
                 <a className="btn btn-ghost" href="#proyectos">
                   Ver casos
@@ -105,10 +113,7 @@ const App = () => {
             </div>
 
             <div className="hero-visual" aria-hidden="true">
-              <div className="hero-emblem-frame">
-                <div className="spear-aura" />
-                <SpearMark />
-              </div>
+              <img className="hero-brand-watermark" src={brandLogo} alt="" loading="lazy" />
             </div>
           </section>
 
@@ -149,9 +154,14 @@ const App = () => {
               Contanos el contexto y te proponemos un plan de trabajo realista, con alcance y
               prioridades definidas.
             </p>
-            <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
-              Escribinos
-            </a>
+            <div className="cta-actions">
+              <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
+                Escribinos
+              </a>
+              <a className="btn btn-ghost" href="https://wa.me/541132050333" target="_blank" rel="noreferrer">
+                WhatsApp
+              </a>
+            </div>
           </SectionBlock>
         </main>
 

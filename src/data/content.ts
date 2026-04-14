@@ -7,6 +7,8 @@ export type Project = {
   name: string;
   description: string;
   stack: string;
+  image: string;
+  imageAlt: string;
   href?: string;
 };
 
@@ -36,19 +38,24 @@ export const projects: Project[] = [
   {
     name: 'Bralt Products',
     description:
-      'Plataforma para gestión y trazabilidad productos apartir de códigos QR con panel de administración y métricas operativas.',
-    stack: 'Web app + panel interno + integración API'
+      'Plataforma para gestión y trazabilidad de productos a partir de códigos QR, con panel de administración y métricas operativas.',
+    stack: 'Web app + panel interno + integración API',
+    image: '/productos.png',
+    imageAlt: 'Panel de Bralt Products con gestión de productos y códigos QR'
   },
   {
     name: 'Control de Acceso QR',
     description:
       'Control de acceso para ingresos mediante lector de QR y código de barras.',
-    stack: 'Web app + app híbrida'
+    stack: 'Web app + app híbrida',
+    image: '/controlAcceso.png',
+    imageAlt: 'Interfaz del sistema de control de acceso por QR y código de barras'
   }
 ];
 
 export const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/azulcodelab', external: true },
+  { label: 'WhatsApp', href: 'https://wa.me/541132050333', external: true },
   { label: 'Email', href: 'mailto:lusolegonzalez@gmail.com' },
   { label: 'GitHub', href: 'https://github.com/lusolegonzalez', external: true }
 ];
