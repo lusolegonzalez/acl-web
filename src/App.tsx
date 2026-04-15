@@ -4,30 +4,30 @@ import {
   projects,
   services,
   socialLinks,
+  whatWeDo,
   type NavLink,
   type Project,
-  type SocialLink
+  type SocialLink,
+  type Service
 } from './data/content';
 
-type SectionBlockProps = {
+type SectionProps = {
   id: string;
   title: string;
   children: ReactNode;
   className?: string;
 };
 
-const SectionBlock = ({ id, title, children, className = '' }: SectionBlockProps) => (
+const Section = ({ id, title, children, className = '' }: SectionProps) => (
   <section className={`section ${className}`.trim()} id={id} aria-labelledby={`${id}-title`}>
-    <h2 id={`${id}-title`}>{title}</h2>
+    <div className="section-head">
+      <h2 id={`${id}-title`}>{title}</h2>
+    </div>
     {children}
   </section>
 );
 
-type NavItemsProps = {
-  links: NavLink[];
-};
-
-const NavItems = ({ links }: NavItemsProps) => (
+const NavItems = ({ links }: { links: NavLink[] }) => (
   <ul className="nav-links">
     {links.map((link) => (
       <li key={link.href}>
@@ -37,28 +37,28 @@ const NavItems = ({ links }: NavItemsProps) => (
   </ul>
 );
 
-type ProjectCardProps = {
-  project: Project;
-};
+const ServiceCard = ({ service }: { service: Service }) => (
+  <article className="card service-card">
+    <h3>{service.title}</h3>
+    <p>{service.description}</p>
+  </article>
+);
 
-const ProjectCard = ({ project }: ProjectCardProps) => (
-  <article className="card project-card">
+const ProjectCard = ({ project }: { project: Project }) => (
+  <article className="project-card">
     <div className="project-media">
       <img src={project.image} alt={project.imageAlt} loading="lazy" />
     </div>
     <div className="project-content">
+      <p className="project-label">{project.label}</p>
       <h3>{project.name}</h3>
       <p>{project.description}</p>
-      <p className="project-stack">{project.stack}</p>
+      <span className="project-link-placeholder">Enlace de caso disponible próximamente</span>
     </div>
   </article>
 );
 
-type FooterLinkProps = {
-  link: SocialLink;
-};
-
-const FooterLink = ({ link }: FooterLinkProps) => (
+const FooterLink = ({ link }: { link: SocialLink }) => (
   <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>
     {link.label}
   </a>
@@ -66,116 +66,116 @@ const FooterLink = ({ link }: FooterLinkProps) => (
 
 const App = () => {
   const year = new Date().getFullYear();
-  const brandLogo = '/LogoAzulCodeLab.png';
 
   return (
-    <div className="app-shell">
+    <div className="page-shell">
       <a className="skip-link" href="#contenido-principal">
         Saltar al contenido
       </a>
-      <div className="ambient-glow ambient-glow-left" aria-hidden="true" />
-      <div className="ambient-glow ambient-glow-right" aria-hidden="true" />
 
-      <div className="app">
-        <header className="site-header">
-          <a href="#inicio" className="brand">
-            <img className="brand-logo" src={brandLogo} alt="Azul Code Lab" />
-            <span className="brand-text">
-              <strong>AZUL</strong>
-              <small>CODE LAB</small>
+      <header className="site-header">
+        <div className="container header-inner">
+          <a href="#inicio" className="brand" aria-label="Ir al inicio">
+            <img className="brand-logo" src="/LogoAzulCodeLab.png" alt="Logo Azul Code Lab" />
+            <span className="brand-copy">
+              <strong>Azul Code Lab</strong>
+              <small>Software con dirección</small>
             </span>
           </a>
-          <nav className="site-nav" aria-label="Navegación principal">
+
+          <nav aria-label="Navegación principal" className="site-nav">
             <NavItems links={navLinks} />
           </nav>
-          <a className="btn btn-header" href="#contacto">
-            Hablemos
-          </a>
-        </header>
+        </div>
+      </header>
 
-        <main id="contenido-principal">
-          <section className="hero" id="inicio" aria-labelledby="hero-title">
-            <div className="hero-content">
-              <p className="eyebrow">Ingeniería de producto para operación real</p>
-              <h1 id="hero-title">Construimos software que resuelve problemas reales. Sin humo.</h1>
-              <p className="hero-subtitle">
-                Diseñamos, construimos y mantenemos sistemas a medida con foco en ejecución.
-                Criterio técnico, entregas concretas y comunicación directa de principio a fin.
+      <main id="contenido-principal">
+        <section className="hero" id="inicio" aria-labelledby="hero-title">
+          <div className="container hero-grid">
+            <div className="hero-copy">
+              <p className="eyebrow">Azul Code Lab</p>
+              <h1 id="hero-title">Construimos software que resuelve problemas reales</h1>
+              <p>
+                Diseñamos y desarrollamos soluciones tecnológicas que funcionan en el mundo real. Sin humo. Sin
+                vueltas.
               </p>
-              <div className="hero-actions">
-                <a className="btn btn-primary" href="#contacto">
-                  Hablemos
-                </a>
-                <a className="btn btn-ghost" href="#proyectos">
-                  Ver casos
-                </a>
-              </div>
+              <a className="btn btn-primary" href="#contacto">
+                Hablemos
+              </a>
             </div>
 
             <div className="hero-visual" aria-hidden="true">
-              <img className="hero-brand-watermark" src={brandLogo} alt="" loading="lazy" />
+              <div className="hero-visual-frame">
+                <img src="/LogoAzulCodeLab.png" alt="" className="hero-logo" loading="lazy" />
+                <p>
+                  Foco, ejecución y dirección técnica
+                </p>
+              </div>
             </div>
-          </section>
+          </div>
 
-          <SectionBlock id="que-hacemos" title="Qué hacemos">
-            <p>
-              Transformamos necesidades de negocio en productos digitales utilizables. Cada etapa
-              tiene un responsable, un criterio de calidad y una fecha de entrega.
-            </p>
-          </SectionBlock>
+          <div className="container trust-row" aria-label="Señales de confianza">
+            <p>Entregas con alcance claro</p>
+            <p>Comunicación técnica directa</p>
+            <p>Software útil para el trabajo diario</p>
+          </div>
+        </section>
 
-          <SectionBlock id="servicios" title="Servicios">
-            <div className="services-grid">
-              {services.map((service) => (
-                <article className="card" key={service}>
-                  <h3>{service}</h3>
-                </article>
-              ))}
-            </div>
-          </SectionBlock>
+        <Section id="que-hacemos" title="Qué hacemos">
+          <p className="section-intro">
+            Trabajamos sobre problemas concretos de operación y negocio. Priorizamos impacto real antes que complejidad
+            innecesaria.
+          </p>
+          <ul className="list-grid">
+            {whatWeDo.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Section>
 
-          <SectionBlock id="proyectos" title="Proyectos destacados">
-            <div className="projects-grid">
-              {projects.map((project) => (
-                <ProjectCard key={project.name} project={project} />
-              ))}
-            </div>
-          </SectionBlock>
+        <Section id="servicios" title="Servicios">
+          <div className="services-grid">
+            {services.map((service) => (
+              <ServiceCard key={service.title} service={service} />
+            ))}
+          </div>
+        </Section>
 
-          <SectionBlock id="nosotros" title="Sobre la marca">
-            <p>
-              Azul Code Lab combina visión técnica con disciplina de entrega. Entramos en proyectos
-              donde hace falta criterio y ejecución: menos discurso, más software funcionando.
-            </p>
-          </SectionBlock>
+        <Section id="proyectos" title="Proyectos">
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <ProjectCard key={project.name} project={project} />
+            ))}
+          </div>
+        </Section>
 
-          <SectionBlock id="contacto" title="¿Necesitás resolver algo crítico en semanas y no en meses?" className="cta">
-            <p>
-              Contanos el contexto y te proponemos un plan de trabajo realista, con alcance y
-              prioridades definidas.
-            </p>
-            <div className="cta-actions">
-              <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
-                Escribinos
-              </a>
-              <a className="btn btn-ghost" href="https://wa.me/541132050333" target="_blank" rel="noreferrer">
-                WhatsApp
-              </a>
-            </div>
-          </SectionBlock>
-        </main>
+        <Section id="nosotros" title="Sobre la marca">
+          <p className="section-intro">
+            Desarrollamos soluciones con foco en ejecución, claridad técnica y utilidad real. Nos interesa que el
+            software funcione donde importa: en el trabajo diario.
+          </p>
+        </Section>
 
-        <footer className="site-footer">
-          <p className="footer-brand">AZUL CODE LAB</p>
-          <p>Arquitectura clara, implementación prolija y foco total en impacto operativo.</p>
+        <Section id="contacto" title="¿Tenés un problema que nadie te está resolviendo?" className="cta-section">
+          <p className="section-intro">Si querés, revisamos tu contexto y proponemos un camino concreto para avanzar.</p>
+          <a className="btn btn-primary" href="mailto:lusolegonzalez@gmail.com">
+            Contactar
+          </a>
+        </Section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <p className="footer-brand">Azul Code Lab</p>
+          <p className="footer-text">Software claro, útil y hecho para operar sin fricción.</p>
           <div className="footer-links">
             {socialLinks.map((link) => (
               <FooterLink key={link.label} link={link} />
             ))}
           </div>
           <p className="footer-copy">© {year} Azul Code Lab</p>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
   );
 };

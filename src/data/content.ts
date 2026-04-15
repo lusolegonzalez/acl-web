@@ -3,10 +3,15 @@ export type NavLink = {
   label: string;
 };
 
+export type Service = {
+  title: string;
+  description: string;
+};
+
 export type Project = {
   name: string;
   description: string;
-  stack: string;
+  label: string;
   image: string;
   imageAlt: string;
   href?: string;
@@ -19,6 +24,7 @@ export type SocialLink = {
 };
 
 export const navLinks: NavLink[] = [
+  { href: '#inicio', label: 'Inicio' },
   { href: '#que-hacemos', label: 'Qué hacemos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#proyectos', label: 'Proyectos' },
@@ -26,36 +32,58 @@ export const navLinks: NavLink[] = [
   { href: '#contacto', label: 'Contacto' }
 ];
 
-export const services = [
-  'Desarrollo de software a medida',
-  'Integración de sistemas',
-  'Automatización de procesos',
-  'Desarrollo de MVPs y productos digitales',
-  'Optimización de sistemas existentes'
+export const whatWeDo = [
+  'Software a medida para procesos críticos y operaciones reales.',
+  'Integraciones entre sistemas para un flujo de datos estable.',
+  'Automatización de tareas repetitivas para ganar tiempo y control.',
+  'MVPs y productos digitales con foco en validar valor rápido.',
+  'Optimización de plataformas existentes para mejorar rendimiento y mantenibilidad.'
+];
+
+export const services: Service[] = [
+  {
+    title: 'Desarrollo de software a medida',
+    description: 'Construimos soluciones específicas para tu operación, sin plantillas genéricas.'
+  },
+  {
+    title: 'Integración de sistemas',
+    description: 'Conectamos herramientas y plataformas para centralizar datos y reducir fricción.'
+  },
+  {
+    title: 'Automatización de procesos',
+    description: 'Eliminamos tareas manuales y errores recurrentes con flujos automatizados.'
+  },
+  {
+    title: 'Desarrollo de MVPs y productos digitales',
+    description: 'Diseñamos versiones iniciales sólidas para validar hipótesis con usuarios reales.'
+  },
+  {
+    title: 'Optimización de sistemas existentes',
+    description: 'Mejoramos arquitectura, rendimiento y legibilidad para escalar sin deuda excesiva.'
+  }
 ];
 
 export const projects: Project[] = [
   {
-    name: 'Bralt Products',
+    name: 'Bralt QR',
     description:
-      'Plataforma para gestión y trazabilidad de productos a partir de códigos QR, con panel de administración y métricas operativas.',
-    stack: 'Web app + panel interno + integración API',
+      'Sistema de trazabilidad por QR para gestión de productos, operación interna y seguimiento en tiempo real.',
+    label: 'Gestión operativa · QR',
     image: '/productos.png',
-    imageAlt: 'Panel de Bralt Products con gestión de productos y códigos QR'
+    imageAlt: 'Panel de Bralt QR para gestión de productos y trazabilidad'
   },
   {
-    name: 'Control de Acceso QR',
+    name: 'Proyecto editable',
     description:
-      'Control de acceso para ingresos mediante lector de QR y código de barras.',
-    stack: 'Web app + app híbrida',
+      'Base de producto para control de accesos con lectura QR y código de barras, preparada para nuevas integraciones.',
+    label: 'Control de acceso · Web App',
     image: '/controlAcceso.png',
-    imageAlt: 'Interfaz del sistema de control de acceso por QR y código de barras'
+    imageAlt: 'Interfaz de control de acceso con lectura de QR y código de barras'
   }
 ];
 
 export const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/azulcodelab', external: true },
-  { label: 'WhatsApp', href: 'https://wa.me/541132050333', external: true },
   { label: 'Email', href: 'mailto:lusolegonzalez@gmail.com' },
   { label: 'GitHub', href: 'https://github.com/lusolegonzalez', external: true }
 ];
