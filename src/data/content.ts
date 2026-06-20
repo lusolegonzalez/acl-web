@@ -24,12 +24,10 @@ export type SocialLink = {
 };
 
 export const navLinks: NavLink[] = [
-  { href: '#inicio', label: 'Inicio' },
   { href: '#que-hacemos', label: 'Qué hacemos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#proyectos', label: 'Proyectos' },
-  { href: '#nosotros', label: 'Marca' },
-  { href: '#contacto', label: 'Contacto' }
+  { href: '#marca', label: 'Marca' }
 ];
 
 export const whatWeDo = [
@@ -73,9 +71,9 @@ export const projects: Project[] = [
     imageAlt: 'Panel de Bralt QR para gestión de productos y trazabilidad'
   },
   {
-    name: 'Proyecto editable',
+    name: 'Control de Acceso de Visitantes',
     description:
-      'Base de producto para control de accesos con lectura QR y código de barras, preparada para nuevas integraciones.',
+      'Invitación por link, autogestión del visitante y validación DNI/QR con auditoría. Base preparada para nuevas integraciones.',
     label: 'Control de acceso · Web App',
     image: '/controlAcceso.png',
     imageAlt: 'Interfaz de control de acceso con lectura de QR y código de barras'
@@ -84,6 +82,6 @@ export const projects: Project[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/azulcodelab', external: true },
-  { label: 'Email', href: 'mailto:lusolegonzalez@gmail.com' },
+  { label: 'lusolegonzalez@gmail.com', href: 'mailto:lusolegonzalez@gmail.com' },
   { label: 'GitHub', href: 'https://github.com/lusolegonzalez', external: true }
 ];
