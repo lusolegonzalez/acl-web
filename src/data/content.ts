@@ -82,6 +82,6 @@ export const projects: Project[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/azulcodelab', external: true },
-  { label: 'lusolegonzalez@gmail.com', href: 'mailto:lusolegonzalez@gmail.com' },
+  { label: 'azulcodelab@gmail.com', href: 'mailto:azulcodelab@gmail.com' },
   { label: 'GitHub', href: 'https://github.com/lusolegonzalez', external: true }
 ];
